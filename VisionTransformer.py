@@ -26,14 +26,9 @@ def ViT(input_shape, num_classes, num_transformer_blocks, embed_dim, num_heads, 
     x = layers.Reshape((-1, x.shape[-1]))(x)
 
     for _ in range(num_transformer_blocks):
-        x = transformer_block(x, embed_dim, num_heads, ff_dim, dropout)
+        output = transformer_block(x, embed_dim, num_heads, ff_dim, dropout)(x)
 
-#     x = layers.Flatten()(x)
-# #     x = layers.Dense(256, activation="relu")(x)
-#     x = layers.Dropout(0.5)(x)
-#     outputs = layers.Dense(num_classes, activation="softmax")(x)
-
-    return models.Model(inputs,x)
+    return models.Model(inputs,output)
 
 # Example usage:
 # input_shape = (128, 128, 3)  # Replace with your image input shape
