@@ -53,13 +53,13 @@ def CapsNet(input_shape, num_classes):
 
     # Capsule Layer
     x = layers.Reshape((-1, 64))(x)
-    x = CapsuleLayer(num_capsules=num_classes, dim_capsule=16, routings=3)(x)
+    output = CapsuleLayer(num_capsules=num_classes, dim_capsule=16, routings=3)(x)
 
     # Final Classification
 #     x = layers.Lambda(lambda x: tf.sqrt(tf.reduce_sum(tf.square(x), axis=-1)), name='norm')(x)
-    outputs = layers.Activation('softmax')(x)
+    # outputs = layers.Activation('softmax')(x)
 
-    return models.Model(inputs, x)
+    return models.Model(inputs, output)
 
 # Example usage:
 # input_shape = (128, 128, 3)  # Replace with your image input shape
