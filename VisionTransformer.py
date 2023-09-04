@@ -30,7 +30,7 @@ def ViT(input_shape, num_classes, num_transformer_blocks, embed_dim, num_heads, 
 
     return models.Model(inputs,output)
 
-# Example usage:
+# Example usage :
 # input_shape = (128, 128, 3)  # Replace with your image input shape
 # num_classes = 2  # Number of classes for classification
 # num_transformer_blocks = 4  # Number of transformer blocks
